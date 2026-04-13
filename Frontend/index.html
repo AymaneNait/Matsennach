@@ -7,7 +7,7 @@
 <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin"/>
 <meta name="description" content="Matsennach Morocco — La plateforme N°1 des services à domicile au Maroc."/>
 <title>Matsennach — Services Rapides</title>
-<link rel="icon" type="image/png" href="matsennach-logo.png"
+<link rel="icon" type="image/png" href="logo3-removebg-preview (1).png">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <style>
@@ -710,34 +710,6 @@ footer{background:#05050f;color:rgba(255,255,255,.38);padding:68px 5% 28px;borde
     </div>
 
     <button class="fsub" onclick="confirmReservation()">Confirmer la réservation</button>
-  </div>
-</div>
-
-<!-- REVIEW MODAL -->
- <div id="reviewModal" class="modal-ov" style="display:none;" onclick="if(event.target===this) closeReviewModal()">
-  <div class="modal">
-    <button class="mcl" onclick="closeReviewModal()">×</button>
-    <h2>Donner un avis</h2>
-
-    <p><strong>Prestataire :</strong> <span id="reviewProvName"></span></p>
-
-    <div class="fg">
-      <label>Note</label>
-      <div id="starBox" style="display:flex; gap:8px; font-size:24px; cursor:pointer;">
-        <span onclick="setRating(1)">⭐</span>
-        <span onclick="setRating(2)">⭐</span>
-        <span onclick="setRating(3)">⭐</span>
-        <span onclick="setRating(4)">⭐</span>
-        <span onclick="setRating(5)">⭐</span>
-      </div>
-    </div>
-
-    <div class="fg">
-      <label>Commentaire</label>
-      <textarea id="reviewComment" placeholder="Votre avis..."></textarea>
-    </div>
-
-    <button class="fsub" onclick="submitReview()">Envoyer l'avis</button>
   </div>
 </div>
 <!-- TOAST -->
@@ -2029,74 +2001,7 @@ window.confirmReservation = async function () {
         details
       })
     });
-let currentReviewProvider = null;
-let selectedRating = 5;
 
-function openReviewModal(provider) {
-  currentReviewProvider = provider;
-
-  const modal = document.getElementById("reviewModal");
-  if (!modal) {
-    toast("Review modal introuvable", "err");
-    return;
-  }
-
-  document.getElementById("reviewProvName").textContent = provider.name || "";
-  document.getElementById("reviewComment").value = "";
-  selectedRating = 5;
-
-  modal.style.display = "flex";
-}
-
-function closeReviewModal() {
-  const modal = document.getElementById("reviewModal");
-  if (modal) modal.style.display = "none";
-}
-
-function setRating(rating) {
-  selectedRating = rating;
-  toast(`Note sélectionnée : ${rating}⭐`, "info");
-}
-
-window.submitReview = async function () {
-  const user = JSON.parse(localStorage.getItem("user") || "null");
-  const comment = document.getElementById("reviewComment").value.trim();
-
-  if (!currentReviewProvider) {
-    toast("Aucun prestataire sélectionné", "err");
-    return;
-  }
-
-  try {
-    const res = await fetch(`${API_BASE_URL}/api/reviews`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        providerName: currentReviewProvider.name,
-        rating: selectedRating,
-        comment,
-        user: user?.firstName || user?.name || "Utilisateur",
-        city: currentReviewProvider.city || ""
-      })
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      toast(data.message || "Erreur lors de l'ajout de l'avis", "err");
-      return;
-    }
-
-    toast("Avis envoyé avec succès ✅", "ok");
-    closeReviewModal();
-    renderTestis(); // refresh testimonials section
-  } catch (error) {
-    console.error("Submit review error:", error);
-    toast("Erreur serveur", "err");
-  }
-};
     const data = await res.json();
 
     if (!res.ok) {
@@ -2249,75 +2154,15 @@ function initSecBG(){
 // RENDER
 // ══════════════════════════════════════════════
 let favs=new Set();
-function renderProvs(list) {
-  document.getElementById("provGrid").innerHTML = list.map((p, i) => `
-    <div class="pcard rv" style="transition-delay:${i * 0.07}s">
-      <div class="pcard-top"></div>
-
-      <div class="pb">
-        <div class="ph">
-          <div style="display:flex;align-items:center">
-            <div class="pav">
-              ${p.name.charAt(0)}
-              ${p.verified ? '<div class="vb">✓</div>' : ''}
-            </div>
-
-            <div>
-              <div class="pname">${p.name}</div>
-              <span class="pcat">${p.cat}</span>
-            </div>
-          </div>
-
-          <button class="fav" onclick="toggleFav(${i}, this)">
-            ${favs.has(i) ? "❤️" : "🤍"}
-          </button>
-        </div>
-
-        <div class="pdesc">${p.desc}</div>
-
-        <div class="pmeta">
-          <div class="prt">
-            <span class="sts">★★★★★</span>
-            <span class="rn">${p.rating}</span>
-            <span class="rc">(${p.reviews})</span>
-          </div>
-          <div class="ploc">📍 ${p.city}</div>
-        </div>
-
-        <div class="pfoot">
-          <div>
-            <span class="ppn">${p.price} MAD</span>
-            <span class="ppu">/h</span>
-          </div>
-
-          <div style="display:flex;gap:8px;">
-            <button 
-              class="bkbtn" 
-              onclick='bkProv(${JSON.stringify({
-                name: p.name,
-                cat: p.cat,
-                city: p.city,
-                price: p.price
-              })})'
-            >
-              Réserver
-            </button>
-
-            <button 
-              class="bkbtn" 
-              onclick='openReviewModal(${JSON.stringify({
-                name: p.name,
-                city: p.city
-              })})'
-            >
-              Avis
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  `).join("");
-
+function renderProvs(list){
+  document.getElementById('provGrid').innerHTML=list.map((p,i)=>`<div class="pcard rv" style="transition-delay:${i*.07}s"><div class="pcard-top"></div><div class="pb"><div class="ph"><div style="display:flex;align-items:center"><div class="pav">${p.name.charAt(0)}${p.verified?'<div class="vb">✓</div>':''}</div><div><div class="pname">${p.name}</div><span class="pcat">${p.cat}</span></div></div><button class="fav" onclick="toggleFav(${i},this)">${favs.has(i)?'❤️':'🤍'}</button></div><div class="pdesc">${p.desc}</div><div class="pmeta"><div class="prt"><span class="sts">★★★★★</span><span class="rn">${p.rating}</span><span class="rc">(${p.reviews})</span></div><div class="ploc">📍 ${p.city}</div></div><div class="pfoot"><div><span class="ppn">${p.price} MAD</span>
+    <span class="ppu">/h</span></div>
+    <button class="bkbtn" onclick='bkProv(${JSON.stringify({
+  name: p.name,
+  cat: p.cat,
+  city: p.city,
+  price: p.price
+})})'>Réserver</button></div></div></div>`).join('');
   observeRv();
 }
 function toggleFav(i,btn){favs.has(i)?(favs.delete(i),btn.textContent='🤍'):(favs.add(i),btn.textContent='❤️',toast('Ajouté aux favoris ❤️','ok'));}
@@ -2362,41 +2207,8 @@ function closeReservationModal() {
   const modal = document.getElementById("reservationModal");
   if (modal) modal.style.display = "none";
 }
-
-async function renderTestis() {
-  try {
-    const res = await fetch(`${API_BASE_URL}/api/reviews`);
-    const data = await res.json();
-
-    const grid = document.getElementById("testiGrid");
-
-    if (!data.length) {
-      grid.innerHTML = `
-        <div class="tc rv">
-          <div class="tt">Aucun avis pour le moment...</div>
-        </div>
-      `;
-      return;
-    }
-
-    grid.innerHTML = data.map(t => `
-      <div class="tc rv">
-        <div class="tq">"</div>
-        <div class="tt">${t.comment || "Excellent service !"}</div>
-        <div class="ta">
-          <div class="tav">${(t.user || "U").charAt(0)}</div>
-          <div>
-            <div class="tan">${t.user || "Utilisateur"}</div>
-            <div class="tac">📍 ${t.city || "Maroc"} · ${"⭐".repeat(t.rating)}</div>
-          </div>
-        </div>
-      </div>
-    `).join("");
-
-    observeRv();
-  } catch (error) {
-    console.error("Erreur renderTestis:", error);
-  }
+function renderTestis(){
+  document.getElementById('testiGrid').innerHTML=TESTIS.map(t=>`<div class="tc rv"><div class="tq">"</div><div class="tt">${t.text}</div><div class="ta"><div class="tav">${t.author.charAt(0)}</div><div><div class="tan">${t.author}</div><div class="tac">📍 ${t.city} · ${'⭐'.repeat(t.rating)}</div></div></div></div>`).join('');
 }
 
 // ══════════════════════════════════════════════
