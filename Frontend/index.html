@@ -44,7 +44,7 @@ a{text-decoration:none;color:inherit}
 /* LOADER */
 #loader{position:fixed;inset:0;background:var(--dark);z-index:9000;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s}
 #loader.gone{opacity:0;pointer-events:none}
-.l-logo{font-family:'Syne',sans-serif;font-size:52px;font-weight:800;margin-bottom:28px;opacity:0;animation:lf .8s .2s forwards;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.l-logo{font-family:'Syne',sans-serif;font-size:52px;font-weight:800;margin-bottom:28px;opacity:0;animation:lf .8s .2s forwards;background:linear-gradient(135deg,var(--primary),var(--accent));-webkit-background-clip:text;background-clip: text; -webkit-text-fill-color:transparent}
 .l-bar{width:200px;height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden;margin-bottom:14px}
 .l-fill{height:100%;width:0;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:2px;transition:width .06s}
 .l-txt{font-size:11px;color:rgba(255,255,255,.35);letter-spacing:2px;text-transform:uppercase;opacity:0;animation:lf .8s .4s forwards}
@@ -52,7 +52,8 @@ a{text-decoration:none;color:inherit}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:66px;transition:.4s}
-nav.sc{background:rgba(13,13,26,.93);backdrop-filter:blur(20px);border-bottom:1px solid rgba(108,60,225,.12)}
+nav.sc{background:rgba(13,13,26,.93);
+-webkit-backdrop-filter: text;  backdrop-filter:blur(20px);border-bottom:1px solid rgba(108,60,225,.12)}
 .logo{display:flex;align-items:center;gap:10px;cursor:pointer}
 .logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:20px;font-weight:800;box-shadow:0 0 20px rgba(108,60,225,.4)}
 .logo-text{font-family:'Syne',sans-serif;font-size:20px;font-weight:700}
@@ -78,12 +79,13 @@ nav.sc{background:rgba(13,13,26,.93);backdrop-filter:blur(20px);border-bottom:1p
 .hero-ov{position:absolute;inset:0;background:linear-gradient(135deg,rgba(13,13,26,.92) 0%,rgba(13,13,26,.55) 55%,rgba(13,13,26,.2) 100%)}
 .hero-content{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 5%;width:100%;display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px}
 .hero-text{position:relative}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(108,60,225,.1);border:1px solid rgba(108,60,225,.22);border-radius:50px;padding:6px 16px;margin-bottom:26px;font-size:13px;color:rgba(255,255,255,.75);backdrop-filter:blur(10px)}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(108,60,225,.1);border:1px solid rgba(108,60,225,.22);border-radius:50px;padding:6px 16px;margin-bottom:26px;font-size:13px;color:rgba(255,255,255,.75);
+ -webkit-backdrop-filter: text; backdrop-filter:blur(10px)}
 .hero h1{font-family:'Syne',sans-serif;font-size:clamp(38px,5.5vw,72px);font-weight:800;line-height:1.0;margin-bottom:22px}
 .line{display:block;overflow:hidden}
 .line span{display:inline-block;transform:translateY(100%);opacity:0;animation:lr .9s cubic-bezier(.16,1,.3,1) forwards}
 .line:nth-child(1) span{animation-delay:.3s}.line:nth-child(2) span{animation-delay:.45s}.line:nth-child(3) span{animation-delay:.6s}
-.accent{background:linear-gradient(135deg,var(--primary-light),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.accent{background:linear-gradient(135deg,var(--primary-light),var(--accent));background-clip: none; -webkit-background-clip:text;-webkit-text-fill-color:transparent}
 @keyframes lr{to{transform:translateY(0);opacity:1}}
 .hero p{font-size:17px;color:rgba(255,255,255,.55);max-width:490px;line-height:1.75;margin-bottom:38px;opacity:0;animation:fu .8s .9s forwards}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fu .8s 1.05s forwards}
@@ -94,7 +96,8 @@ nav.sc{background:rgba(13,13,26,.93);backdrop-filter:blur(20px);border-bottom:1p
 
 /* HERO 3D HOUSE */
 .hero-3d-wrap{position:relative;z-index:2;opacity:0;animation:fu .9s 1.3s forwards}
-#houseCanvas{width:100%;height:460px;border-radius:20px;cursor:grab;border:1px solid rgba(108,60,225,.15);background:rgba(108,60,225,.03);backdrop-filter:blur(4px)}
+#houseCanvas{width:100%;height:460px;border-radius:20px;cursor:grab;border:1px solid rgba(108,60,225,.15);background:rgba(108,60,225,.03);
+  -webkit-backdrop-filter: text;  backdrop-filter:blur(4px)}
 #houseCanvas:active{cursor:grabbing}
 .canvas-hint{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(255,255,255,.3);letter-spacing:1.5px;text-transform:uppercase;pointer-events:none;white-space:nowrap}
 
@@ -138,6 +141,7 @@ section{padding:92px 5%}
   position:fixed;z-index:9000;pointer-events:none;
   background:rgba(13,13,26,.92);
   border:1px solid rgba(108,60,225,.35);
+  -webkit-backdrop-filter: blur();
   backdrop-filter:blur(14px);
   border-radius:12px;padding:11px 15px;
   min-width:170px;max-width:220px;
@@ -205,7 +209,7 @@ section{padding:92px 5%}
 .how-sec{background:var(--dark3);position:relative;overflow:hidden}
 .how-sec::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(108,60,225,.055),transparent 70%);pointer-events:none}
 .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:36px;position:relative;z-index:1}
-.step-num{font-family:'Syne',sans-serif;font-size:68px;font-weight:800;color:rgba(255,255,255,.035);line-height:1;margin-bottom:-20px;user-select:none}
+.step-num{font-family:'Syne',sans-serif;font-size:68px;font-weight:800;color:rgba(255,255,255,.035);line-height:1;margin-bottom:-20px; -webkit-user-select: none; user-select:none}
 .step-icon{width:56px;height:56px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));border-radius:15px;display:flex;align-items:center;justify-content:center;font-size:23px;margin-bottom:16px;box-shadow:0 8px 22px rgba(108,60,225,.33);transition:.3s}
 .step:hover .step-icon{transform:rotate(-7deg) scale(1.1);box-shadow:0 12px 30px rgba(108,60,225,.48)}
 .step-title{font-weight:600;font-size:16px;margin-bottom:9px}
@@ -260,7 +264,9 @@ footer{background:#05050f;color:rgba(255,255,255,.38);padding:68px 5% 28px;borde
 .fsec{display:flex;align-items:center;gap:5px;color:#22c55e;font-size:11.5px}
 
 /* MODAL */
-.modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:800;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px)}
+.modal-ov{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:800;display:none;align-items:center;justify-content:center;padding:20px;
+  -webkit-backdrop-filter: blur();
+  backdrop-filter:blur(8px)}
 .modal-ov.on{display:flex}
 .modal{background:#131328;border:1px solid rgba(108,60,225,.15);border-radius:22px;padding:34px;max-width:450px;width:100%;position:relative;animation:mi .3s cubic-bezier(.34,1.56,.64,1)}
 @keyframes mi{from{transform:scale(.88) translateY(18px);opacity:0}to{transform:scale(1);opacity:1}}
@@ -313,7 +319,7 @@ footer{background:#05050f;color:rgba(255,255,255,.38);padding:68px 5% 28px;borde
 
   background: rgba(24,24,50,0.85);
   border: 1px solid rgba(255,255,255,.08);
-
+-webkit-backdrop-filter: blur();
   backdrop-filter: blur(12px);
   box-shadow: 0 10px 30px rgba(0,0,0,0.35);
 
@@ -407,6 +413,7 @@ footer{background:#05050f;color:rgba(255,255,255,.38);padding:68px 5% 28px;borde
   color: #fff;
   outline: none;
   font-size: 14px;
+  -webkit-backdrop-filter: blur();
   backdrop-filter: blur(10px);
   transition: 0.2s;
 }
@@ -450,6 +457,7 @@ footer{background:#05050f;color:rgba(255,255,255,.38);padding:68px 5% 28px;borde
     <div><div class="logo-text">Matsennach.ma</div></div>
   </div>
   <div class="nav-links">
+    <a href="#">Accueille</a>
     <a href="#services3d">Services 3D</a>
     <a href="#villes">Villes</a>
     <a href="#providers">Prestataires</a>
@@ -625,8 +633,8 @@ footer{background:#05050f;color:rgba(255,255,255,.38);padding:68px 5% 28px;borde
     </div>
     <div class="fc"><h4>Services</h4><a href="#">Plomberie</a><a href="#">Électricité</a><a href="#">Nettoyage</a><a href="#">Informatique</a><a href="#">Jardinage</a></div>
     <div class="fc"><h4>Plateforme</h4><a href="#" onclick="openModal('provider')">Devenir prestataire</a><a href="#" onclick="openModal()">S'inscrire</a><a href="#securite">Sécurité</a><a href="#">Comment ça marche</a></div>
-    <div class="fc"><h4>Contact</h4><a href="#">📧<span class="__cf_email__" > matsennach7@gmail.com</span>
-    </a><a href="http://wa.me/212608101021">📞 +212 6 08 10 10 21</a>
+    <div class="fc"><h4>Contact</h4><a href="#">📧<span class="__cf_email__" > Matsennach7@gmail.com</span>
+    </a><a href="http://wa.me/212670653724">📞 +212 6 70 65 37 24</a>
     <a href="https://www.google.com/maps?q=Rabat,+Morocco">📍 Rabat, Maroc</a>
     <div class="fsec">🔒 Site sécurisé SSL</div></div>
   </div>
@@ -669,6 +677,7 @@ footer{background:#05050f;color:rgba(255,255,255,.38);padding:68px 5% 28px;borde
             <option>Fès</option>
             <option>Tanger</option>
             <option>Agadir</option>
+            <option>Other</option>
         </select></div>
       <div class="fg"><label>Je suis</label><select id="roleS"><option value="client">🧑 Client</option><option value="provider">👷 Prestataire</option></select></div>
       <div class="fg">
@@ -712,6 +721,67 @@ footer{background:#05050f;color:rgba(255,255,255,.38);padding:68px 5% 28px;borde
     <button class="fsub" onclick="confirmReservation()">Confirmer la réservation</button>
   </div>
 </div>
+
+<!-- REVIEW MODAL -->
+<div id="reviewModal" class="modal-ov" style="display:none;" onclick="if(event.target===this) closeReviewModal()">
+  <div class="modal">
+    <button class="mcl" onclick="closeReviewModal()">×</button>
+    <h2>Laisser un avis</h2>
+
+    <p><strong>Prestataire :</strong> <span id="reviewProvName"></span></p>
+
+    <div class="fg">
+      <label>Note</label>
+      <div id="ratingStars" style="display:flex; gap:8px; font-size:26px; cursor:pointer; margin-top:8px;">
+        <span onclick="setRating(1)">☆</span>
+        <span onclick="setRating(2)">☆</span>
+        <span onclick="setRating(3)">☆</span>
+        <span onclick="setRating(4)">☆</span>
+        <span onclick="setRating(5)">☆</span>
+      </div>
+    </div>
+
+    <div class="fg">
+      <label>Commentaire</label>
+      <textarea id="reviewComment" rows="4" placeholder="Votre avis sur ce prestataire..."></textarea>
+    </div>
+
+    <button class="fsub" onclick="submitReview()">Envoyer l’avis</button>
+  </div>
+</div>
+
+<!-- DEMAND / CUSTOM PRICE MODAL -->
+<div id="demandModal" class="modal-ov" style="display:none;" onclick="if(event.target===this) closeDemandModal()">
+  <div class="modal">
+    <button class="mcl" onclick="closeDemandModal()">×</button>
+    <h2>Envoyer une demande</h2>
+
+    <p><strong>Prestataire :</strong> <span id="demandProvName"></span></p>
+    <p><strong>Prix actuel :</strong> <span id="demandProvPrice"></span></p>
+
+    <div class="fg">
+      <label>Votre prix proposé (MAD)</label>
+      <input type="number" id="demandProposedPrice" placeholder="Ex: 250" min="200">
+    </div>
+
+    <div class="fg">
+      <label>Date souhaitée</label>
+      <input type="date" id="demandDate">
+    </div>
+
+    <div class="fg">
+      <label>Heure souhaitée</label>
+      <input type="time" id="demandTime">
+    </div>
+
+    <div class="fg">
+      <label>Détails de la demande</label>
+      <textarea id="demandDetails" rows="4" placeholder="Expliquez votre besoin..."></textarea>
+    </div>
+
+    <button class="fsub" onclick="submitDemand()">Envoyer la demande</button>
+  </div>
+</div>
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
@@ -725,17 +795,18 @@ footer{background:#05050f;color:rgba(255,255,255,.38);padding:68px 5% 28px;borde
   <div class="wah"><div class="waa">🤖</div><div><div class="wahn">Matsennach Morocco Support</div><div class="wahs"><div class="waod"></div>En ligne</div></div><button class="wacl" onclick="toggleWA()">✕</button></div>
   <div class="wam" id="waM"></div>
   <button class="wa-redir" onclick="openWA()"><svg viewBox="0 0 24 24" fill="#25D366" width="14" height="14"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>Continuer sur WhatsApp →</button>
-  <div class="wai-area"><input class="wai" id="waI" placeholder="Écrivez un message..." onkeydown="if(event.key==='Enter')sendMsg()"/><button class="was" onclick="sendMsg()"><svg viewBox="0 0 24 24" fill="#fff"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button></div>
+  <div class="wai-area"><input class="wai" id="waI" placeholder="Écrivez un message..." onkeydown="if(event.key==='Enter')sendMsg()"/><button class="was" onclick="sendMsg()"><svg viewBox="0 0 24 24" fill="#fff"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>.</button></div>
 </div>
 
 <script>
 // ══════════════════════════════════════════════
 // DATA
 // ══════════════════════════════════════════════
-const WA_NUM='212608101021';
+const WA_NUM='212670653724';
 const API_BASE_URL =
+  window.location.hostname === "127.0.0.1" ||
   window.location.hostname === "localhost"
-    ? "http://localhost:5000"
+    ? "http://127.0.0.1:5000"
     : "https://matsennach.vercel.app";
 
 history.scrollRestoration = "manual";
@@ -748,15 +819,6 @@ window.addEventListener("load", () => {
   // force scroll to top
   window.scrollTo(0, 0);
 });
-    function saveToken(token){
-      localStorage.setItem("token", token);
-    }
-    function getToken(){
-      return localStorage.getItem("token");
-    }
-    function removeToken(){
-      localStorage.removeItem("token");
-    }
    
    function logout() {
   removeToken();
@@ -1965,13 +2027,13 @@ window.confirmReservation = async function () {
   const token = localStorage.getItem("token");
 
   if (!token) {
-    toast("Veuillez vous connecter d'abord🙏❤️.","show");
+    toast("Veuillez vous connecter d'abord🙏❤️","info");
     openModal();
     return;
   }
 
   if (!currentProvider) {
-    toast("Aucun prestataire sélectionné😕.","show");
+    toast("Aucun prestataire sélectionné😕.","err");
     return;
   }
 
@@ -2021,38 +2083,8 @@ window.confirmReservation = async function () {
   }
 };
 
-const WA_NUM = "212670653724";
 
-const BOT = {
-  prestataire: {
-    t: ["prestataire", "trouver", "service"],
-    r: "Bien sûr 👌 Vous pouvez chercher un prestataire selon la catégorie qui vous intéresse.",
-    q: ["Trouver un prestataire", "Prix en MAD"]
-  },
-  prix: {
-    t: ["prix", "mad", "tarif", "coût"],
-    r: "Les tarifs varient selon le service demandé et le prestataire choisi 💰",
-    q: ["Trouver un prestataire", "Sécurité du site"]
-  },
-  securite: {
-    t: ["sécurité", "site", "protection", "données"],
-    r: "Les profils sont vérifiés et les données sont protégées pour une meilleure sécurité 🔐",
-    q: ["Devenir prestataire", "Trouver un prestataire"]
-  },
-  rejoindre: {
-    t: ["devenir prestataire", "rejoindre", "inscrire"],
-    r: "Excellent choix 🚀 Je peux vous guider vers l’inscription prestataire.",
-    q: ["Créer mon compte"]
-  },
-  def: {
-    r: "Bonjour 👋 Je peux vous aider à trouver un prestataire, comprendre les prix ou vous inscrire.",
-    q: ["Trouver un prestataire", "Prix en MAD", "Sécurité du site", "Devenir prestataire"]
-  }
-};
-console.log("BOT READY", BOT);
-function openModal(type) {
-  console.log("Open modal:", type);
-}
+
   // ── Mouse parallax on canvas ──────────────────────────────────────────────
   c.addEventListener('mousemove', e => {
     const rect = c.getBoundingClientRect();
@@ -2155,14 +2187,68 @@ function initSecBG(){
 // ══════════════════════════════════════════════
 let favs=new Set();
 function renderProvs(list){
-  document.getElementById('provGrid').innerHTML=list.map((p,i)=>`<div class="pcard rv" style="transition-delay:${i*.07}s"><div class="pcard-top"></div><div class="pb"><div class="ph"><div style="display:flex;align-items:center"><div class="pav">${p.name.charAt(0)}${p.verified?'<div class="vb">✓</div>':''}</div><div><div class="pname">${p.name}</div><span class="pcat">${p.cat}</span></div></div><button class="fav" onclick="toggleFav(${i},this)">${favs.has(i)?'❤️':'🤍'}</button></div><div class="pdesc">${p.desc}</div><div class="pmeta"><div class="prt"><span class="sts">★★★★★</span><span class="rn">${p.rating}</span><span class="rc">(${p.reviews})</span></div><div class="ploc">📍 ${p.city}</div></div><div class="pfoot"><div><span class="ppn">${p.price} MAD</span>
-    <span class="ppu">/h</span></div>
-    <button class="bkbtn" onclick='bkProv(${JSON.stringify({
-  name: p.name,
-  cat: p.cat,
-  city: p.city,
-  price: p.price
-})})'>Réserver</button></div></div></div>`).join('');
+  document.getElementById('provGrid').innerHTML = list.map((p,i)=>`
+    <div class="pcard rv" style="transition-delay:${i*.07}s">
+      <div class="pcard-top"></div>
+      <div class="pb">
+        <div class="ph">
+          <div style="display:flex;align-items:center">
+            <div class="pav">
+              ${p.name.charAt(0)}
+              ${p.verified ? '<div class="vb">✓</div>' : ''}
+            </div>
+            <div>
+              <div class="pname">${p.name}</div>
+              <span class="pcat">${p.cat}</span>
+            </div>
+          </div>
+          <button class="fav" onclick="toggleFav(${i},this)">${favs.has(i)?'❤️':'🤍'}</button>
+        </div>
+
+        <div class="pdesc">${p.desc}</div>
+
+        <div class="pmeta">
+          <div class="prt">
+            <span class="sts">★★★★★</span>
+            <span class="rn">${p.rating}</span>
+            <span class="rc">(${p.reviews})</span>
+          </div>
+          <div class="ploc">📍 ${p.city}</div>
+        </div>
+
+        <div class="pfoot" style="display:block;">
+          <div style="margin-bottom:14px;">
+            <span class="ppn">${p.price} MAD</span>
+            <span class="ppu">/h</span>
+          </div>
+
+          <div style="display:flex; gap:8px; flex-wrap:wrap;">
+            <button class="bkbtn" onclick='bkProv(${JSON.stringify({
+              name: p.name,
+              cat: p.cat,
+              city: p.city,
+              price: p.price
+            })})'>Réserver</button>
+
+            <button class="bkbtn" onclick='openReviewModal(${JSON.stringify({
+              name: p.name,
+              cat: p.cat,
+              city: p.city,
+              price: p.price
+            })})'>Avis</button>
+
+            <button class="bkbtn" onclick='openDemandModal(${JSON.stringify({
+              name: p.name,
+              cat: p.cat,
+              city: p.city,
+              price: p.price
+            })})'>Proposer prix</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+
   observeRv();
 }
 function toggleFav(i,btn){favs.has(i)?(favs.delete(i),btn.textContent='🤍'):(favs.add(i),btn.textContent='❤️',toast('Ajouté aux favoris ❤️','ok'));}
@@ -2207,6 +2293,193 @@ function closeReservationModal() {
   const modal = document.getElementById("reservationModal");
   if (modal) modal.style.display = "none";
 }
+
+let currentReviewProvider = null;
+let currentDemandProvider = null;
+let selectedRating = 5;
+
+// ===== REVIEW =====
+function openReviewModal(provider) {
+  const token = getToken();
+  if (!token) {
+    toast("Veuillez vous connecter d'abord", "info");
+    openModal();
+    return;
+  }
+
+  currentReviewProvider = provider;
+  document.getElementById("reviewProvName").textContent = provider.name || "";
+  document.getElementById("reviewComment").value = "";
+  selectedRating = 5;
+  updateStars();
+
+  document.getElementById("reviewModal").style.display = "flex";
+}
+
+function closeReviewModal() {
+  document.getElementById("reviewModal").style.display = "none";
+}
+
+function setRating(rating) {
+  selectedRating = rating;
+  updateStars();
+}
+
+function updateStars() {
+  const stars = document.querySelectorAll("#ratingStars span");
+  stars.forEach((star, index) => {
+    star.textContent = index < selectedRating ? "★" : "☆";
+    star.style.color = index < selectedRating ? "#f59e0b" : "#ffffff";
+  });
+}
+
+async function submitReview() {
+  const token = getToken();
+  const user = getUser();
+  const comment = document.getElementById("reviewComment").value.trim();
+
+  if (!token || !user) {
+    toast("Veuillez vous connecter", "info");
+    openModal();
+    return;
+  }
+
+  if (!currentReviewProvider) {
+    toast("Aucun prestataire sélectionné", "err");
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/reviews`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        providerName: currentReviewProvider.name,
+        category: currentReviewProvider.cat,
+        city: currentReviewProvider.city,
+        rating: selectedRating,
+        comment
+      })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      toast(data.message || "Erreur lors de l'envoi de l'avis", "err");
+      return;
+    }
+
+    toast("Avis envoyé avec succès ✅", "ok");
+    closeReviewModal();
+  } catch (error) {
+    console.error("Review error:", error);
+    toast("Erreur serveur pour l'avis", "err");
+  }
+}
+
+// ===== DEMAND / CUSTOM PRICE =====
+function openDemandModal(provider) {
+  const token = getToken();
+  if (!token) {
+    toast("Veuillez vous connecter d'abord", "info");
+    openModal();
+    return;
+  }
+
+  currentDemandProvider = provider;
+
+  document.getElementById("demandProvName").textContent = provider.name || "";
+  document.getElementById("demandProvPrice").textContent = provider.price ? `${provider.price} MAD/h` : "";
+  document.getElementById("demandProposedPrice").value = "";
+  document.getElementById("demandDate").value = "";
+  document.getElementById("demandTime").value = "";
+  document.getElementById("demandDetails").value = "";
+
+  document.getElementById("demandModal").style.display = "flex";
+}
+
+function closeDemandModal() {
+  document.getElementById("demandModal").style.display = "none";
+}
+
+async function submitDemand() {
+  const token = getToken();
+  const user = getUser();
+
+  if (!token || !user) {
+    toast("Veuillez vous connecter", "info");
+    openModal();
+    return;
+  }
+
+  if (!currentDemandProvider) {
+    toast("Aucun prestataire sélectionné", "err");
+    return;
+  }
+
+  const proposedPrice = document.getElementById("demandProposedPrice").value.trim();
+  const date = document.getElementById("demandDate").value;
+  const time = document.getElementById("demandTime").value;
+  const details = document.getElementById("demandDetails").value.trim();
+
+  if (!proposedPrice) {
+    toast("Entrez votre prix proposé", "info");
+    return;
+  }
+
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/demands`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      body: JSON.stringify({
+        providerName: currentDemandProvider.name,
+        category: currentDemandProvider.cat,
+        city: currentDemandProvider.city,
+        originalPrice: currentDemandProvider.price,
+        proposedPrice: Number(proposedPrice),
+        date,
+        time,
+        details,
+        status: "pending"
+      })
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      toast(data.message || "Erreur lors de l'envoi de la demande", "err");
+      return;
+    }
+
+    toast("Demande envoyée ✅ En attente d'acceptation", "ok");
+    closeDemandModal();
+  } catch (error) {
+    console.error("Demand error:", error);
+    toast("Erreur serveur pour la demande", "err");
+  }
+}
+
+
+// ACCEPT OR REJECT-->
+async function acceptDemand(id) {
+  const token = localStorage.getItem("token");
+
+  await fetch(`${API_BASE_URL}/api/demands/${id}/accept`, {
+    method: "PATCH",
+    headers: {
+      Authorization: `Bearer ${token}`
+    }
+  });
+
+  toast("Demande acceptée", "ok");
+}
+
 function renderTestis(){
   document.getElementById('testiGrid').innerHTML=TESTIS.map(t=>`<div class="tc rv"><div class="tq">"</div><div class="tt">${t.text}</div><div class="ta"><div class="tav">${t.author.charAt(0)}</div><div><div class="tan">${t.author}</div><div class="tac">📍 ${t.city} · ${'⭐'.repeat(t.rating)}</div></div></div></div>`).join('');
 }
@@ -2399,13 +2672,244 @@ function closeWA() {
   waOpen = false;
   document.getElementById("waWin").classList.remove("on");
 }
+const BOT = {
+  accueil: {
+    t: [
+      "bonjour",
+      "salut",
+      "hello",
+      "hey",
+      "yo"
+    ],
+    r:
+      "👋 Bonjour ! Je suis l'assistant *Matsennach Morocco* 🇲🇦\n\nJe peux vous aider à trouver un prestataire, publier une demande ou répondre à vos questions.",
+    q: [
+      "Trouver un prestataire",
+      "Voir les catégories",
+      "Publier une demande",
+      "Prix et paiement",
+      "Sécurité du site",
+      "Devenir prestataire"
+    ]
+  },
+
+  prestataire: {
+    t: [
+      "prestataire",
+      "service",
+      "trouver",
+      "professionnel",
+      "artisan",
+      "chercher un prestataire",
+      "je cherche",
+      "trouver un service"
+    ],
+    r:
+      "🔎 Nous avons plusieurs prestataires qualifiés selon le service dont vous avez besoin.",
+    q: [
+      "Électricien",
+      "Plombier",
+      "Développeur web",
+      "Designer",
+      "Femme de ménage",
+      "Coach sportif"
+    ]
+  },
+
+  categories: {
+    t: [
+      "voir les catégories",
+      "voir les categories",
+      "catégories",
+      "categories",
+      "services",
+      "liste des services",
+      "quels services",
+      "vos services"
+    ],
+    r:
+      "📂 Voici quelques catégories disponibles sur Matsennach :\n\n• Électricité ⚡\n• Plomberie 🚿\n• Développement Web 💻\n• Design 🎨\n• Ménage 🧹\n• Coaching 🏋️\n• Réparation 📱",
+    q: [
+      "Trouver un prestataire",
+      "Publier une demande",
+      "Prix et paiement"
+    ]
+  },
+
+  demande: {
+    t: [
+      "demande",
+      "publier",
+      "besoin",
+      "recherche",
+      "poster une demande",
+      "publier une demande"
+    ],
+    r:
+      "📩 Vous pouvez publier votre demande gratuitement et recevoir plusieurs propositions rapidement.",
+    q: [
+      "Publier une demande",
+      "Voir les catégories",
+      "Trouver un prestataire"
+    ]
+  },
+
+  prix: {
+    t: [
+      "prix",
+      "tarif",
+      "mad",
+      "coût",
+      "cout",
+      "paiement",
+      "combien",
+      "payer"
+    ],
+    r:
+      "💰 Les prix varient selon le type de service, la durée du travail et le prestataire choisi.",
+    q: [
+      "Modes de paiement",
+      "Services populaires",
+      "Trouver un prestataire"
+    ]
+  },
+
+  paiement: {
+    t: [
+      "modes de paiement",
+      "paiement",
+      "payer",
+      "carte",
+      "cash",
+      "virement",
+      "paypal"
+    ],
+    r:
+      "💳 Matsennach propose plusieurs moyens de paiement simples et sécurisés.",
+    q: [
+      "Paiement par carte",
+      "Paiement en cash",
+      "Sécurité du site"
+    ]
+  },
+
+  securite: {
+    t: [
+      "sécurité",
+      "securite",
+      "protection",
+      "données",
+      "donnees",
+      "fiable",
+      "arnaque",
+      "safe",
+      "protéger"
+    ],
+    r:
+      "🔐 Votre sécurité est importante. Les profils sont vérifiés et les données sont protégées pour une meilleure expérience.",
+    q: [
+      "Comment signaler un problème",
+      "Voir les avis",
+      "Trouver un prestataire"
+    ]
+  },
+
+  avis: {
+    t: [
+      "avis",
+      "review",
+      "note",
+      "évaluation",
+      "evaluation",
+      "commentaire",
+      "rating"
+    ],
+    r:
+      "⭐ Chaque prestataire possède des avis et des notes laissés par les clients pour aider les utilisateurs à choisir avec confiance.",
+    q: [
+      "Voir les avis",
+      "Laisser un avis",
+      "Trouver un prestataire"
+    ]
+  },
+
+  rejoindre: {
+    t: [
+      "devenir prestataire",
+      "rejoindre",
+      "inscription",
+      "inscrire",
+      "travailler",
+      "créer mon compte",
+      "creer mon compte",
+      "ouvrir un compte"
+    ],
+    r:
+      "🚀 Excellent choix ! Rejoignez Matsennach comme prestataire et commencez à recevoir des demandes de clients.",
+    q: [
+      "Créer mon compte",
+      "Conditions prestataire",
+      "Publier mes services"
+    ]
+  },
+
+  support: {
+    t: [
+      "support",
+      "aide",
+      "problème",
+      "probleme",
+      "bug",
+      "contact",
+      "assistance"
+    ],
+    r:
+      "🛟 Notre équipe support est disponible pour vous aider rapidement.",
+    q: [
+      "Contacter le support",
+      "FAQ",
+      "Sécurité du site"
+    ]
+  },
+
+  localisation: {
+    t: [
+      "ville",
+      "rabat",
+      "casablanca",
+      "marrakech",
+      "agadir",
+      "localisation",
+      "où",
+      "ou"
+    ],
+    r:
+      "📍 Matsennach est disponible dans plusieurs villes du Maroc 🇲🇦",
+    q: [
+      "Prestataires à Rabat",
+      "Prestataires à Casablanca",
+      "Prestataires à Marrakech"
+    ]
+  },
+
+  def: {
+    r:
+      "😊 Je suis là pour vous aider. Choisissez une option ci-dessous ou posez votre question.",
+    q: [
+      "Trouver un prestataire",
+      "Voir les catégories",
+      "Publier une demande",
+      "Prix et paiement",
+      "Sécurité du site",
+      "Devenir prestataire",
+      "Support"
+    ]
+  }
+};
 
 function botHi() {
   showTyp(() => {
-    addBot(
-      "👋 Bonjour ! Je suis l'assistant *Matsennach Morocco* 🇲🇦\n\nComment puis-je vous aider ?",
-      ["Trouver un prestataire", "Prix en MAD", "Sécurité du site", "Devenir prestataire"]
-    );
+    addBot(BOT.accueil.r, BOT.accueil.q);
   }, 900);
 }
 
@@ -2432,58 +2936,28 @@ function sendQR(t) {
 }
 
 function procMsg(text) {
-  const low = text.toLowerCase();
+  const low = text.toLowerCase().trim();
 
-  if (
-    low.includes("s'inscrire") ||
-    low.includes("inscrire maintenant") ||
-    low.includes("créer mon compte") ||
-    low.includes("devenir prestataire")
-  ) {
-    showTyp(() => {
-      addBot(
-        "Super ! 🎉 Je vous redirige vers l'inscription.",
-        ["Créer mon compte"]
-      );
-    }, 700);
-    return;
-  }
+  let response = BOT.def;
 
-  if (low.includes("prestataire") || low.includes("trouver") || low.includes("service")) {
-    showTyp(() => {
-      addBot(
-        "Bien sûr 👌 Vous pouvez rechercher un prestataire selon le service souhaité.",
-        ["Prix en MAD", "Sécurité du site", "Devenir prestataire"]
-      );
-    }, 800);
-    return;
-  }
+  for (const key in BOT) {
+    if (key === "def") continue;
 
-  if (low.includes("prix") || low.includes("mad") || low.includes("tarif") || low.includes("coût")) {
-    showTyp(() => {
-      addBot(
-        "Les prix varient selon le type de service et le prestataire choisi 💰",
-        ["Trouver un prestataire", "Devenir prestataire"]
-      );
-    }, 800);
-    return;
-  }
+    const item = BOT[key];
 
-  if (low.includes("sécurité") || low.includes("site") || low.includes("protection")) {
-    showTyp(() => {
-      addBot(
-        "Les profils sont vérifiés et les données sont protégées pour une meilleure sécurité 🔐",
-        ["Trouver un prestataire", "Devenir prestataire"]
-      );
-    }, 800);
-    return;
+    if (
+      item.t &&
+      item.t.some(word =>
+        low.includes(word.toLowerCase())
+      )
+    ) {
+      response = item;
+      break;
+    }
   }
 
   showTyp(() => {
-    addBot(
-      "Je suis là pour vous aider 😊 Choisissez une option ci-dessous ou continuez sur WhatsApp.",
-      ["Trouver un prestataire", "Prix en MAD", "Sécurité du site", "Devenir prestataire"]
-    );
+    addBot(response.r, response.q);
   }, 800);
 }
 
@@ -2491,6 +2965,7 @@ function addBot(text, qr = []) {
   waMsgCount++;
 
   const c = document.getElementById("waM");
+
   const time = new Date().toLocaleTimeString("fr-MA", {
     hour: "2-digit",
     minute: "2-digit"
@@ -2511,12 +2986,16 @@ function addBot(text, qr = []) {
   if (qr && qr.length) {
     h += `
       <div class="waqr">
-        ${qr
-          .map(
-            (q) =>
-              `<button class="qr" onclick="sendQR('${q.replace(/'/g, "\\'")}')">${q}</button>`
-          )
-          .join("")}
+        ${qr.map(
+          q => `
+            <button 
+              class="qr" 
+              onclick="sendQR('${q.replace(/'/g, "\\'")}')"
+            >
+              ${q}
+            </button>
+          `
+        ).join("")}
       </div>
     `;
   }
@@ -2527,6 +3006,7 @@ function addBot(text, qr = []) {
 
 function addU(text) {
   const c = document.getElementById("waM");
+
   const time = new Date().toLocaleTimeString("fr-MA", {
     hour: "2-digit",
     minute: "2-digit"
@@ -2547,18 +3027,24 @@ function addU(text) {
 
 function showTyp(cb, delay) {
   const c = document.getElementById("waM");
+
   const el = document.createElement("div");
 
   el.className = "msg b";
   el.id = "typ";
-  el.innerHTML = '<div class="typ"><span></span><span></span><span></span></div>';
+
+  el.innerHTML =
+    '<div class="typ"><span></span><span></span><span></span></div>';
 
   c.appendChild(el);
+
   c.scrollTop = c.scrollHeight;
 
   setTimeout(() => {
     const t = document.getElementById("typ");
+
     if (t) t.remove();
+
     cb();
   }, delay);
 }
